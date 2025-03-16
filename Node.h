@@ -8,11 +8,11 @@ public:
     Node* left;
     Node* right;
 
-    Node(T value) : data(value), left(nullptr), right(nullptr) {
+    Node(T value) : data(value), left(nullptr), right(nullptr) { // TODO: Implement constructor here
         data = value;
         left = nullptr;
         right = nullptr;
-    } // TODO: Implement constructor here
+    }
 };
 
 #endif // NODE_H
