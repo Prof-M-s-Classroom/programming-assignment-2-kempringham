@@ -24,6 +24,7 @@ public:
     void loadStoryFromFile(const std::string& filename, char delimiter) {
         // Story class variables
         string eventNumber, description, leftChild, rightChild;
+        int event;
 
         ifstream infile; // our "cin"
 
@@ -35,19 +36,15 @@ public:
             string line;
             while (getline(infile, line)) { // while there is another line in the .txt file
                 stringstream ss(line);
-                getline(ss, eventNumber, delimiter);
-                getline(ss, description, delimiter);
-                getline(ss, leftChild, delimiter);
-                getline(ss, rightChild, delimiter);
-                Story<string> Story;
-                Story::Story(description, 1, 2, 3);
-                cout << Story << endl;
-
+                getline(ss, eventNumber, delimiter); // reads the first string in the line(the event number)
+                getline(ss, description, delimiter); // reads the second string in the line(the description)
+                getline(ss, leftChild, delimiter); // reads the third string in the line(the left child)
+                getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
+                Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
+                Node<T>* node = new Node<T>(story);
                 }
-                // eventNumber is the number before the delimiter
-                // description is the whole string before the next delimiter
-                // left child is the number before the delimiter
-                // right child is the number after the last delimiter
+
+
             infile.close();
         }
         else {
