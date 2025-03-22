@@ -2,8 +2,8 @@
 # CS210 Data Structures SP25
 ## Programming Assignment 2: Text-Based RPG Using Decision Trees
 
-### **Student Name:** `[Kimmy Empringham] 
-### **Student ID:** `[130687294]`  
+### **Student Name:** `Kimmy Empringham
+### **Student ID:** `130687294 
 
 ---
 
