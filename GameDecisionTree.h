@@ -62,17 +62,11 @@ public:
             }
         }
 
+        else {
+            cout << "Unable to open file" << endl;
+        }
 
             infile.close();
-            // Print description of current event number - put this in play game
-            // Print description of leftChild - put this in play game
-            // Print description of rightChild - put this in play game
-            // if choice = 1, node points to left child
-            // if choice = 2, node points to right child
-            // current node becomes 1 or 2(depending on user choice)
-        //else {
-         //   cout << "Unable to open file" << endl;
-        //}
 
         cin.get();
     }
