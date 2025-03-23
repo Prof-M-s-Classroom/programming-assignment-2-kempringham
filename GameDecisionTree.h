@@ -60,8 +60,6 @@ public:
                     currentNode = currentNode->right;
                 }
             }
-            //    if (stoi(leftChild) != -1 && stoi(rightChild) != -1) {
-            //        cout << 'test';
         }
 
 
