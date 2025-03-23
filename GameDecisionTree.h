@@ -50,13 +50,13 @@ public:
             }
             root = nodeMap[1];
             Node<Story>* currentNode = root;
-            for (int i = 1; i < mapLength; i++) {
+            for (int i = 2; i < mapLength; i++) {
                 if (stoi(leftChild)!= -1) {
-                    currentNode->left = nodeMap[i];
+                    currentNode->left = nodeMap[leftChild];
                     currentNode = currentNode->left;
                 }
                 if (stoi(rightChild)!= -1) {
-                    currentNode->right = nodeMap[i];
+                    currentNode->right = nodeMap[rightChild];
                     currentNode = currentNode->right;
                 }
             }
