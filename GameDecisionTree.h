@@ -7,7 +7,6 @@
 #include <iostream>
 #include "Node.h"
 #include "Story.h"
-using namespace std; // From video
 
 template <typename T>
 class GameDecisionTree {
@@ -31,33 +30,57 @@ public:
         // attempt to open the file
         infile.open(filename);
 
+        int mapLength = 1;
+        unordered_map<int, Node<T>*> nodeMap;
+
         // verify that the file actually opened
         if (infile.is_open()) {
             string line;
-            while (getline(infile, line)) { // while there is another line in the .txt file
+            while (getline(infile, line)) {
+                // while there is another line in the .txt file
                 stringstream ss(line);
                 getline(ss, eventNumber, delimiter); // reads the first string in the line(the event number)
                 getline(ss, description, delimiter); // reads the second string in the line(the description)
                 getline(ss, leftChild, delimiter); // reads the third string in the line(the left child)
                 getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
                 Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
-                Node<T>* node = new Node<T>(story);
+                Node<Story>* node = new Node<Story>(story);
+                nodeMap[mapLength] = node;
+                mapLength += 1;
+            }
+            root = nodeMap[1];
+            Node<Story>* currentNode = root;
+            for (int i = 1; i < mapLength; i++) {
+                if (stoi(leftChild)!= -1) {
+                    currentNode->left = nodeMap[i];
+                    currentNode = currentNode->left;
                 }
+                if (stoi(rightChild)!= -1) {
+                    currentNode->right = nodeMap[i];
+                    currentNode = currentNode->right;
+                }
+            }
+            //    if (stoi(leftChild) != -1 && stoi(rightChild) != -1) {
+            //        cout << 'test';
+        }
 
 
             infile.close();
-        }
-        else {
-            cout << "Unable to open file" << endl;
-        }
+            // Print description of current event number - put this in play game
+            // Print description of leftChild - put this in play game
+            // Print description of rightChild - put this in play game
+            // if choice = 1, node points to left child
+            // if choice = 2, node points to right child
+            // current node becomes 1 or 2(depending on user choice)
+        //else {
+         //   cout << "Unable to open file" << endl;
+        //}
 
         cin.get();
     }
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
-
-
     }
 };
 
