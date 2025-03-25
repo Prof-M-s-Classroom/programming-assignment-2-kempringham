@@ -23,7 +23,6 @@ public:
     void loadStoryFromFile(const std::string& filename, char delimiter) {
         // Story class variables
         string eventNumber, description, leftChild, rightChild;
-        int event;
 
         ifstream infile; // our "cin"
 
@@ -72,12 +71,49 @@ public:
             }
         }
 
+        // delete?
+
     }
 
 
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
+        // Print eventNumber 1
+        // Print left Child
+        // Print right child
+        // print user to pick one or two
+        if (root == nullptr) {
+            cout << "No root node found" << endl;
+        }
+        Node<T>* curr = root;
+        while (curr != nullptr) {
+            int userChoice;
+            std::cin >> userChoice;
+            Story& story = curr->data;
+            cout << story.getDescription() << endl;
+            int option1 = story.getLeftEventNumber();
+            cout << option1 << endl;
+            int option2 = story.getRightEventNumber();
+            cout << option2 << endl;
+            if (userChoice == option1) {
+                curr = curr->left;
+            }
+            else if (userChoice == option2) {
+                curr = curr->right;
+            }
+            else {
+                cout << "Invalid option entered" << endl;
+            }
+        }
+
+        // print the description of the node at the event number
+        // print "1. " + description of node at left child number
+        // print "2. " + description of node at right child number
+        // if user inputs one, the current node becomes the node at the index of the left child
+        // if user input two, the current node becomes the node at the index of the right child
+        // repeat
+        // 1 | You wake up in a forest clearing. There are two paths. | 2 | 3
 
     }
 };
