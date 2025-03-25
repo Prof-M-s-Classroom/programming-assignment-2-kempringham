@@ -48,28 +48,44 @@ public:
                 nodeMap[mapLength] = node;
                 mapLength += 1;
             }
-            root = nodeMap[1];
-            Node<Story>* currentNode = root;
-            for (int i = 2; i < mapLength; i++) {
-                if (stoi(leftChild)!= -1) {
-                    currentNode->left = nodeMap[leftChild];
-                    currentNode = currentNode->left;
-                }
-                if (stoi(rightChild)!= -1) {
-                    currentNode->right = nodeMap[rightChild];
-                    currentNode = currentNode->right;
-                }
-            }
         }
 
+        // Error message if file does not open
         else {
             cout << "Unable to open file" << endl;
         }
 
-            infile.close();
+        infile.close();
+        for (int i = 1; i < mapLength; i++) {
+            Node<T>* curr = nodeMap[i];
+            Story& story = curr->data;
+            int leftChild = story.getLeftEventNumber();
+            int rightChild = story.getRightEventNumber();
+            if (leftChild != - 1) {
+                curr->left = nodeMap[leftChild];
+            }
+            if (rightChild != -1) {
+                curr->right = nodeMap[rightChild];
+            }
+        }
 
-        cin.get();
+        //for (int i = 1; i < mapLength; i++) {
+        //    Node<Story>* currentNode = nodeMap[i];
+        //}
+
+        // Add helper method for creating tree
+        //void binaryTree(Node<Story>* root, nodeMap[mapLength]) {
+        //    if (stoi(leftChild)!= -1 && stoi(rightChild) != -1)  {
+         //       inorder(root->left, );
+         //   }
+         //   if (stoi(rightChild)!= -1) {
+        //        root->right = nodeMap[rightChild];
+        //        assigningPointers(root->right, root);
+        //    }
+        //}
     }
+
+
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {

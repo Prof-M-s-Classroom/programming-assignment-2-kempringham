@@ -16,3 +16,21 @@ Story::Story(std::string desc, int num, int leftNum, int rightNum)
     leftEventNumber = leftNum;
     rightEventNumber = rightNum;
 }
+
+// Added helper functions
+
+std::string Story::getDescription() {
+    return description;
+}
+
+int Story::getEventNumber() {
+    return eventNumber;
+}
+
+int Story::getLeftEventNumber() {
+    return leftEventNumber;
+}
+
+int Story::getRightEventNumber() {
+    return rightEventNumber;
+}
