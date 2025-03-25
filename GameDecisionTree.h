@@ -59,13 +59,13 @@ public:
         for (int i = 1; i < mapLength; i++) {
             Node<T>* curr = nodeMap[i];
             Story& story = curr->data;
-            int leftChild = story.getLeftEventNumber();
-            int rightChild = story.getRightEventNumber();
-            if (leftChild != - 1) {
-                curr->left = nodeMap[leftChild];
+            int left = story.getLeftEventNumber();
+            int right = story.getRightEventNumber();
+            if (left != - 1) {
+                curr->left = nodeMap[left];
             }
-            if (rightChild != -1) {
-                curr->right = nodeMap[rightChild];
+            if (right != -1) {
+                curr->right = nodeMap[right];
             }
         }
 
@@ -75,6 +75,7 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
+
     }
 };
 
