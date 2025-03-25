@@ -69,20 +69,6 @@ public:
             }
         }
 
-        //for (int i = 1; i < mapLength; i++) {
-        //    Node<Story>* currentNode = nodeMap[i];
-        //}
-
-        // Add helper method for creating tree
-        //void binaryTree(Node<Story>* root, nodeMap[mapLength]) {
-        //    if (stoi(leftChild)!= -1 && stoi(rightChild) != -1)  {
-         //       inorder(root->left, );
-         //   }
-         //   if (stoi(rightChild)!= -1) {
-        //        root->right = nodeMap[rightChild];
-        //        assigningPointers(root->right, root);
-        //    }
-        //}
     }
 
 
