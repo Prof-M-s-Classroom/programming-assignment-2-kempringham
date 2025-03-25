@@ -55,7 +55,10 @@ public:
             cout << "Unable to open file" << endl;
         }
 
+        // Close the file
         infile.close();
+
+        // Create the binary search tree
         for (int i = 1; i < mapLength; i++) {
             Node<T>* curr = nodeMap[i];
             Story& story = curr->data;
