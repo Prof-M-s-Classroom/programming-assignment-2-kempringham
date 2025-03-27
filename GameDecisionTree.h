@@ -99,24 +99,24 @@ public:
 
         // Check if root exists
         if (root == nullptr) {
-            std::cout << "No root node found" << endl;
+            std::cout << "No root node found" << std::endl;
             return;
         }
 
         while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
-            std::cout << curr->data.getDescription() << endl;
+            std::cout << curr->data.getDescription() << std::endl;
 
             // Print option one
             int option1 = curr->data.getLeftEventNumber();
             if (option1 != -1) {
-                std::cout << "1. " << curr->left->data.getDescription() << endl;
+                std::cout << "1. " << curr->left->data.getDescription() << std::endl;
             }
 
             // Print option two
             int option2 = curr->data.getRightEventNumber();
             if (option2 != -1) {
-                std::cout << "2. " << curr->right->data.getDescription() << endl;
+                std::cout << "2. " << curr->right->data.getDescription() << std::endl;
             }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
@@ -152,7 +152,7 @@ public:
             if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
-                    std::cout << "Game Over" << endl;
+                    std::cout << "Game Over" << std::endl;
                 }
                 else {
                     curr = curr->left;
@@ -163,7 +163,7 @@ public:
             else if (userChoice == 2) {
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
-                    std::cout << "Game Over" << endl;
+                    std::cout << "Game Over" << std::endl;
                 }
                 else {
                     curr = curr->right;
