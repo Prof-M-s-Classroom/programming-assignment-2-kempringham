@@ -5,9 +5,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <limits>
 #include "Node.h"
 #include "Story.h"
-#include <limits> // added
 
 template <typename T>
 class GameDecisionTree {
@@ -15,165 +15,118 @@ private:
     Node<T>* root;
 
 public:
-    // TODO: Constructor
-    GameDecisionTree() : root(nullptr) {
-    }
+    // Constructor
+    GameDecisionTree() : root(nullptr) {}
 
-    // TODO: Function to load story data from a text file and build the binary tree
     void loadStoryFromFile(const std::string& filename, char delimiter) {
-        // Story class variables
-        string eventNumber, description, leftChild, rightChild;
+        std::ifstream infile(filename);
 
-        ifstream infile; // our "cin"
+        if (!infile) {
+            std::cerr << "Unable to open file: " << filename << std::endl;
+            return;
+        }
 
-        // attempt to open the file
-        infile.open(filename);
-
-        unordered_map<int, Node<T>*> nodeMap;
+        std::unordered_map<int, Node<T>*> nodeMap;
+        std::string line, eventNumber, description, leftChild, rightChild;
         int mapLength = 1;
 
-        // verify that the file actually opened
-        if (infile.is_open()) {
-            string line;
-            while (getline(infile, line)) {
-                // while there is another line in the .txt file
-                stringstream ss(line);
-                getline(ss, eventNumber, delimiter); // reads the first string in the line(the event number)
-                getline(ss, description, delimiter); // reads the second string in the line(the description)
-                getline(ss, leftChild, delimiter); // reads the third string in the line(the left child)
-                getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
-                Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
-                Node<Story>* node = new Node<Story>(story);
-                nodeMap[stoi(eventNumber)] = node;
-                mapLength += 1;
+        while (std::getline(infile, line)) {
+            std::stringstream ss(line);
+
+            if (std::getline(ss, eventNumber, delimiter) &&
+                std::getline(ss, description, delimiter) &&
+                std::getline(ss, leftChild, delimiter) &&
+                std::getline(ss, rightChild)) {
+
+                try {
+                    int eventNum = std::stoi(eventNumber);
+                    int leftNum = std::stoi(leftChild);
+                    int rightNum = std::stoi(rightChild);
+
+                    Story story(description, eventNum, leftNum, rightNum);
+                    Node<Story>* node = new Node<Story>(story);
+                    nodeMap[eventNum] = node;
+                    mapLength++;
+                }
+                catch (const std::exception& e) {
+                    std::cerr << "Error processing line: " << line << std::endl;
+                }
             }
         }
 
-        // Error message if file does not open
-        else {
-            cout << "Unable to open file" << endl;
-        }
-
-        // Close the file
-        infile.close();
-
-        // Create the binary search tree
+        // Build tree connections
         for (int i = 1; i < mapLength; i++) {
-            // set the current node to the node at index i
+            if (nodeMap.count(i) == 0) continue;
+
             Node<T>* curr = nodeMap[i];
             Story& story = curr->data;
-            int left = story.getLeftEventNumber();
-            int right = story.getRightEventNumber();
 
-            // if left child is not -1, set left child to the node at the index of the left child
-            if (left != - 1) {
-                curr->left = nodeMap[left];
-            }
-            // if left child is -1, set left child to null
-            else {
-                curr->left = nullptr;
-            }
+            curr->left = (story.getLeftEventNumber() != -1)
+                ? nodeMap[story.getLeftEventNumber()]
+                : nullptr;
 
-            // if right child is not -1, set right child to the node at the index of the right child
-            if (right != -1) {
-                curr->right = nodeMap[right];
-            }
-            // if right child is -1, set right child to null
-            else {
-                curr->right = nullptr;
-            }
+            curr->right = (story.getRightEventNumber() != -1)
+                ? nodeMap[story.getRightEventNumber()]
+                : nullptr;
         }
 
-        // Assign root to the first node
-        root = nodeMap[1];
-
-        // TODO: delete for memory management
-
+        // Set root to first node
+        root = nodeMap.count(1) ? nodeMap[1] : nullptr;
     }
 
-
-
-    // TODO: Function to start the game and traverse the tree based on user input
-void playGame() {
+    void playGame() {
         Node<T>* curr = root;
 
-        // Check if root exists
         if (root == nullptr) {
-            std::cout << "No root node found" << std::endl;
+            std::cout << "No story loaded. Cannot start the game." << std::endl;
             return;
         }
 
         while (curr != nullptr) {
-            // Print the current situation and the paths that the user can take
+            // Print current situation
             std::cout << curr->data.getDescription() << std::endl;
 
-            // Print option one
-            int option1 = curr->data.getLeftEventNumber();
-            if (option1 != -1) {
+            // Check available options
+            bool hasLeftOption = curr->data.getLeftEventNumber() != -1;
+            bool hasRightOption = curr->data.getRightEventNumber() != -1;
+
+            // Print available options
+            if (hasLeftOption) {
                 std::cout << "1. " << curr->left->data.getDescription() << std::endl;
             }
-
-            // Print option two
-            int option2 = curr->data.getRightEventNumber();
-            if (option2 != -1) {
+            if (hasRightOption) {
                 std::cout << "2. " << curr->right->data.getDescription() << std::endl;
             }
 
-            // If option one and two are -1, the curr node does not have any children, so the game is over
-            if (option1 == -1 && option2 == -1) {
-                std::cout << "Game Over";
+            // Check for game end condition
+            if (!hasLeftOption && !hasRightOption) {
+                std::cout << "Game Over!" << std::endl;
                 break;
             }
 
-            // make sure user choice is valid(can only be 1 or 2)
+            // Get user input
             int userChoice;
             while (true) {
-                std::cout << "Enter your choice: ";
-                std::cin >> userChoice;
+                std::cout << "Enter your choice (1 or 2): ";
 
-                if (userChoice == 1 || userChoice == 2) {
-                    break;
-                }
-
-                // If user choice is invalid, output that the user must choose a valid choice
-                if (userChoice != 1 && userChoice != 2) {
-                    std::cout << "Must choose either 1 or 2: ";
-                }
-
-                // If user choice is invalid, have user input a valid choice
-                if (std::cin.fail()) {
+                if (!(std::cin >> userChoice)) {
                     std::cin.clear();
-                    std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Invalid input. Please enter 1 or 2." << std::endl;
+                    continue;
                 }
-            }
-            // If user chooses 1, go left
-            if (userChoice == 1) {
-                // If curr's left pointer is null then the game ends
-                if (curr->left == nullptr) {
-                    std::cout << "Game Over" << std::endl;
-                }
-                else {
-                    curr = curr->left;
-                }
+
+                // Validate choice based on available options
+                if (userChoice == 1 && hasLeftOption) break;
+                if (userChoice == 2 && hasRightOption) break;
+
+                std::cout << "Invalid choice. Please choose an available option." << std::endl;
             }
 
-            // If user chooses 1, go right
-            else if (userChoice == 2) {
-                // If curr's right pointer is null then the game ends
-                if (curr->right == nullptr) {
-                    std::cout << "Game Over" << std::endl;
-                }
-                else {
-                    curr = curr->right;
-                }
-            }
-
-
+            // Move to next node
+            curr = (userChoice == 1) ? curr->left : curr->right;
         }
     }
-
-
 };
-
 
 #endif // GAMEDECISIONTREE_H
