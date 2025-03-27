@@ -8,8 +8,6 @@
 #include "Node.h"
 #include "Story.h"
 
-using namespace std;
-
 template <typename T>
 class GameDecisionTree {
 private:
@@ -18,7 +16,6 @@ private:
 public:
     // TODO: Constructor
     GameDecisionTree() : root(nullptr) {
-        root = nullptr;
     }
 
     // TODO: Function to load story data from a text file and build the binary tree
@@ -31,8 +28,8 @@ public:
         // attempt to open the file
         infile.open(filename);
 
-        int mapLength = 1;
         unordered_map<int, Node<T>*> nodeMap;
+        int mapLength = 0;
 
         // verify that the file actually opened
         if (infile.is_open()) {
@@ -46,7 +43,7 @@ public:
                 getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
                 Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
                 Node<Story>* node = new Node<Story>(story);
-                nodeMap[mapLength] = node;
+                nodeMap[stoi(eventNumber)] = node;
                 mapLength += 1;
             }
         }
@@ -143,10 +140,10 @@ public:
                 }
 
                 // If user choice is invalid, have user input a valid choice
-                //if (std::cin.fail()) {
-                //    std::cin.clear();
-                //    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                //}
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
 
             }
 
