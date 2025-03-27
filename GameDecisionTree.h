@@ -82,7 +82,6 @@ public:
     void playGame() {
         Node<T>* curr = root;
 
-
         // Check if root exists
         if (root == nullptr) {
             cout << "No root node found" << endl;
@@ -98,12 +97,6 @@ public:
             cout << "1. " << option1_description << endl;
             cout << "2. " << option2_description << endl;
             std::cin >> userChoice;
-            if (cin.fail()) {
-                cout << "Invalid input" << endl;
-            }
-            else {
-                break;
-            }
 
             if (userChoice == 1) {
                 curr = curr->left;
