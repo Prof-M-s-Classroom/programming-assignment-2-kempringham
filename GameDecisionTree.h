@@ -70,6 +70,7 @@ public:
                 curr->right = nodeMap[right];
             }
         }
+        root = nodeMap[1];
 
         // delete?
 
@@ -79,32 +80,55 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
-        // Print eventNumber 1
-        // Print left Child
-        // Print right child
-        // print user to pick one or two
+        Node<T>* curr = root;
+
+
+        // Check if root exists
         if (root == nullptr) {
             cout << "No root node found" << endl;
         }
-        Node<T>* curr = root;
+        int userChoice;
         while (curr != nullptr) {
-            int userChoice;
+            // Print the current situation and the paths that the user can take
+            cout << curr->data.getDescription() << endl;
+            int option1 = curr->data.getLeftEventNumber();
+            string option1_description = curr->left->data.getDescription();
+            int option2 = curr->data.getRightEventNumber();
+            string option2_description = curr->right->data.getDescription();
+            cout << "1. " << option1_description << endl;
+            cout << "2. " << option2_description << endl;
             std::cin >> userChoice;
-            Story& story = curr->data;
-            cout << story.getDescription() << endl;
-            int option1 = story.getLeftEventNumber();
-            cout << option1 << endl;
-            int option2 = story.getRightEventNumber();
-            cout << option2 << endl;
-            if (userChoice == option1) {
-                curr = curr->left;
-            }
-            else if (userChoice == option2) {
-                curr = curr->right;
+            if (cin.fail()) {
+                cout << "Invalid input" << endl;
             }
             else {
-                cout << "Invalid option entered" << endl;
+                break;
             }
+
+            if (userChoice == 1) {
+                curr = curr->left;
+            }
+            if (userChoice == 2) {
+                curr = curr->right;
+            }
+
+        }
+
+            //Story& story = curr->data;
+            //cout << story.getDescription() << endl;
+            //int option1 = story.getLeftEventNumber();
+            //cout << option1 << endl;
+            //int option2 = story.getRightEventNumber();
+            //cout << option2 << endl;
+            //if (userChoice == option1) {
+            //    curr = curr->left;
+            //}
+            //else if (userChoice == option2) {
+            //    curr = curr->right;
+            //}
+            //else {
+            //    cout << "Invalid option entered" << endl;
+            //}
         }
 
         // print the description of the node at the event number
@@ -116,7 +140,7 @@ public:
         // 1 | You wake up in a forest clearing. There are two paths. | 2 | 3
 
 
-    }
+    //}
 };
 
 #endif // GAMEDECISIONTREE_H
