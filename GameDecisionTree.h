@@ -94,8 +94,6 @@ public:
             return;
         }
 
-        // Print first description
-        int userChoice;
         while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
             cout << curr->data.getDescription() << endl;
@@ -113,34 +111,49 @@ public:
             }
 
             // make sure user choice is valid(can only be 1 or 2)
+
             std:cout << "Enter your choice: ";
-            std::cin >> userChoice;
+            int userChoice;
+            while (true) {
+                std::cin >> userChoice;
 
-            // If user chooses 1, go left
-            if (userChoice == 1) {
-                // If curr's left pointer is null then the game ends
-                if (curr->left == nullptr) {
-                    cout << "Game Over" << endl;
+                if (userChoice == 1 && option1 != -1 || userChoice == 2 && option2 != -1) {
                     break;
                 }
-                else {
-                    curr = curr->left;
+
+                if (userChoice != 1 && userChoice != 2) {
+                    std::cout << "Must choose either 1 or 2: ";
+                }
+                if (std::cin.fail()) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
             }
 
-            // If user chooses 1, go right
-            if (userChoice == 2) {
-                // If curr's right pointer is null then the game ends
-                if (curr->right == nullptr) {
-                    cout << "Game Over" << endl;
-                    break;
+                // If user chooses 1, go left
+                if (userChoice == 1) {
+                    // If curr's left pointer is null then the game ends
+                    if (curr->left == nullptr) {
+                        cout << "Game Over" << endl;
+                    }
+                    else {
+                        curr = curr->left;
+                    }
                 }
-                else {
-                    curr = curr->right;
+
+                // If user chooses 1, go right
+                else if (userChoice == 2) {
+                    // If curr's right pointer is null then the game ends
+                    if (curr->right == nullptr) {
+                        cout << "Game Over" << endl;
+                    }
+                    else {
+                        curr = curr->right;
+                    }
                 }
+
             }
 
-        }
 
     }
 
