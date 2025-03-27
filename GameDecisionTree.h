@@ -146,7 +146,7 @@ void playGame() {
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
             }
-            // If user chooses 1, go left
+
             if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
@@ -173,7 +173,9 @@ void playGame() {
             }
         }
 
-    }
+            // If user chooses 1, go left
+        }
+
 
 };
 
