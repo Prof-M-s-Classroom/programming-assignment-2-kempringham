@@ -120,16 +120,16 @@ void playGame() {
             }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
-            //if (option1 == -1 && option2 == -1) {
-            //    std::cout << "Game Over";
-            //    break;
-            //}
+            if (option1 == -1 && option2 == -1) {
+                std::cout << "Game Over";
+                break;
+            }
 
             // make sure user choice is valid(can only be 1 or 2)
             int userChoice;
             while (true) {
-                std::cout << "Enter your choice: ";
-                std::cin >> userChoice;
+                cout << "Enter your choice: ";
+                cin >> userChoice;
 
                 if ((userChoice == 1 && option1 != -1) || (userChoice == 2 && option2 != -1)) {
                     break;
@@ -137,13 +137,13 @@ void playGame() {
 
                 // If user choice is invalid, output that the user must choose a valid choice
                 if (userChoice != 1 && userChoice != 2) {
-                    std::cout << "Must choose either 1 or 2: ";
+                    cout << "Must choose either 1 or 2: ";
                 }
 
                 // If user choice is invalid, have user input a valid choice
-                if (std::cin.fail()) {
-                    std::cin.clear();
-                    std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
             }
 
@@ -152,7 +152,7 @@ void playGame() {
             if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
-                    std::cout << "Game Over" << std::endl;
+                    cout << "Game Over" << endl;
                 }
                 else {
                     curr = curr->left;
@@ -163,7 +163,7 @@ void playGame() {
             else if (userChoice == 2) {
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
-                    std::cout << "Game Over" << std::endl;
+                    cout << "Game Over" << endl;
                 }
                 else {
                     curr = curr->right;
