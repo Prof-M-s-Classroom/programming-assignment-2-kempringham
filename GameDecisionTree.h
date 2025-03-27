@@ -98,11 +98,26 @@ public:
             cout << "2. " << option2_description << endl;
             std::cin >> userChoice;
 
+            // If user chooses 1, go left
             if (userChoice == 1) {
-                curr = curr->left;
+                // If curr's left pointer is null then the game ends
+                if (curr->left == nullptr) {
+                    cout << "Game Over" << endl;
+                }
+                else {
+                    curr = curr->left;
+                }
             }
-            if (userChoice == 2) {
-                curr = curr->right;
+
+            // If user chooses 1, go right
+            if (userChoice == 2 && curr->right != nullptr) {
+                // If curr's right pointer is null then the game ends
+                if (curr->right == nullptr) {
+                    cout << "Game Over" << endl;
+                }
+                else {
+                    curr = curr->right;
+                }
             }
 
         }
