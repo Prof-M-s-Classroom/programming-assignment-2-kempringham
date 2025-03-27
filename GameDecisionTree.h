@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Node.h"
 #include "Story.h"
+#include <limits> // added
 
 template <typename T>
 class GameDecisionTree {
