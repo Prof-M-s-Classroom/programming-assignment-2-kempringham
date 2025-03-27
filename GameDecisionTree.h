@@ -146,7 +146,6 @@ public:
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
 
-            }
 
                 // If user chooses 1, go left
                 if (userChoice == 1) {
@@ -171,6 +170,7 @@ public:
                 }
 
             }
+        }
 
 
     }
