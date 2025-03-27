@@ -151,6 +151,7 @@ void playGame() {
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
                     std::cout << "Game Over" << std::endl;
+                    curr = nullptr;
                 }
                 else {
                     curr = curr->left;
@@ -162,6 +163,7 @@ void playGame() {
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
                     std::cout << "Game Over" << std::endl;
+                    curr = nullptr;
                 }
                 else {
                     curr = curr->right;
