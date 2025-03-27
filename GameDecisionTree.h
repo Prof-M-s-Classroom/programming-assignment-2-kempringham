@@ -131,7 +131,7 @@ void playGame() {
                 std::cout << "Enter your choice: ";
                 std::cin >> userChoice;
 
-                if ((userChoice == 1 && option1 != -1) || (userChoice == 2 && option2 != -1)) {
+                if (userChoice == 1 || userChoice == 2) {
                     break;
                 }
 
@@ -145,6 +145,29 @@ void playGame() {
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
+            }
+            // If user chooses 1, go left
+            if (userChoice == 1) {
+                // If curr's left pointer is null then the game ends
+                if (curr->left == nullptr) {
+                    std::cout << "Game Over" << std::endl;
+                }
+                else {
+                    curr = curr->left;
+                }
+            }
+
+            // If user chooses 1, go right
+            else if (userChoice == 2) {
+                // If curr's right pointer is null then the game ends
+                if (curr->right == nullptr) {
+                    std::cout << "Game Over" << std::endl;
+                }
+                else {
+                    curr = curr->right;
+                }
+
+
             }
         }
 
