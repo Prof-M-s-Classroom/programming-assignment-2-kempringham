@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(CS210PA2)
+project(Empringham_KimmyRPG)
 
 # Use modern C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -9,6 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(.)
 
 # Source files (only .cpp, no .h files)
-add_executable(CS210PA2
+add_executable(Empringham_KimmyRPG
         main.cpp
         Story.cpp)
