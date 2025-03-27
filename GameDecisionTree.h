@@ -143,10 +143,10 @@ public:
                 }
 
                 // If user choice is invalid, have user input a valid choice
-                if (std::cin.fail()) {
-                    std::cin.clear();
-                    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                }
+                //if (std::cin.fail()) {
+                //    std::cin.clear();
+                //    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                //}
 
             }
 
