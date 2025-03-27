@@ -91,7 +91,10 @@ public:
         // Check if root exists
         if (root == nullptr) {
             cout << "No root node found" << endl;
+            return;
         }
+
+        // Print first description
         int userChoice;
         while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
@@ -104,8 +107,13 @@ public:
             if (option2 != -1) {
                 cout << "2. " << curr->right->data.getDescription() << endl;
             }
+            if (option1 == -1 & option2 == -1) {
+                cout << "Game Over";
+                break;
+            }
 
             // make sure user choice is valid(can only be 1 or 2)
+            std:cout << "Enter your choice: ";
             std::cin >> userChoice;
 
             // If user chooses 1, go left
@@ -113,7 +121,7 @@ public:
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
                     cout << "Game Over" << endl;
-                    curr = nullptr;
+                    break;
                 }
                 else {
                     curr = curr->left;
@@ -125,7 +133,7 @@ public:
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
                     cout << "Game Over" << endl;
-                    curr = nullptr;
+                    break;
                 }
                 else {
                     curr = curr->right;
