@@ -30,7 +30,7 @@ public:
         infile.open(filename);
 
         unordered_map<int, Node<T>*> nodeMap;
-        int mapLength = 0;
+        int mapLength = 1;
 
         // verify that the file actually opened
         if (infile.is_open()) {
