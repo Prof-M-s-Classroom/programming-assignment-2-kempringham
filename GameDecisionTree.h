@@ -122,7 +122,7 @@ public:
             }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
-            if (option1 == -1 & option2 == -1) {
+            if (option1 == -1 && option2 == -1) {
                 cout << "Game Over";
                 break;
             }
@@ -130,10 +130,10 @@ public:
             // make sure user choice is valid(can only be 1 or 2)
             int userChoice;
             while (true) {
-                std:cout << "Enter your choice: ";
-                std::cin >> userChoice;
+                cout << "Enter your choice: ";
+                cin >> userChoice;
 
-                if (userChoice == 1 && option1 != -1 || userChoice == 2 && option2 != -1) {
+                if ((userChoice == 1 && option1 != -1) || (userChoice == 2 && option2 != -1)) {
                     break;
                 }
 
