@@ -95,6 +95,13 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
 void playGame() {
+        Node<T>* curr = root;
+
+        // Check if root exists
+        if (root == nullptr) {
+            std::cout << "No root node found" << std::endl;
+            return;
+        }
 
     }
 
