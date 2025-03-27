@@ -8,6 +8,8 @@
 #include "Node.h"
 #include "Story.h"
 
+using namespace std;
+
 template <typename T>
 class GameDecisionTree {
 private:
