@@ -66,13 +66,19 @@ public:
             if (left != - 1) {
                 curr->left = nodeMap[left];
             }
+            else {
+                curr->left = nullptr;
+            }
             if (right != -1) {
                 curr->right = nodeMap[right];
+            }
+            else {
+                curr->right = nullptr;
             }
         }
         root = nodeMap[1];
 
-        // delete?
+        // TODO: delete for memory management
 
     }
 
@@ -91,11 +97,15 @@ public:
             // Print the current situation and the paths that the user can take
             cout << curr->data.getDescription() << endl;
             int option1 = curr->data.getLeftEventNumber();
-            string option1_description = curr->left->data.getDescription();
             int option2 = curr->data.getRightEventNumber();
-            string option2_description = curr->right->data.getDescription();
-            cout << "1. " << option1_description << endl;
-            cout << "2. " << option2_description << endl;
+            if (option1 != -1) {
+                cout << "1. " << curr->left->data.getDescription() << endl;
+            }
+            if (option2 != -1) {
+                cout << "2. " << curr->right->data.getDescription() << endl;
+            }
+
+            // make sure user choice is valid(can only be 1 or 2)
             std::cin >> userChoice;
 
             // If user chooses 1, go left
@@ -110,7 +120,7 @@ public:
             }
 
             // If user chooses 1, go right
-            if (userChoice == 2 && curr->right != nullptr) {
+            if (userChoice == 2) {
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
                     cout << "Game Over" << endl;
@@ -122,33 +132,8 @@ public:
 
         }
 
-            //Story& story = curr->data;
-            //cout << story.getDescription() << endl;
-            //int option1 = story.getLeftEventNumber();
-            //cout << option1 << endl;
-            //int option2 = story.getRightEventNumber();
-            //cout << option2 << endl;
-            //if (userChoice == option1) {
-            //    curr = curr->left;
-            //}
-            //else if (userChoice == option2) {
-            //    curr = curr->right;
-            //}
-            //else {
-            //    cout << "Invalid option entered" << endl;
-            //}
-        }
+    }
 
-        // print the description of the node at the event number
-        // print "1. " + description of node at left child number
-        // print "2. " + description of node at right child number
-        // if user inputs one, the current node becomes the node at the index of the left child
-        // if user input two, the current node becomes the node at the index of the right child
-        // repeat
-        // 1 | You wake up in a forest clearing. There are two paths. | 2 | 3
-
-
-    //}
 };
 
 #endif // GAMEDECISIONTREE_H
