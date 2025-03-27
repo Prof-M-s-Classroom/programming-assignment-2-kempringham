@@ -119,7 +119,7 @@ public:
             }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
-            if (option1 == -1 && option2 == -1) {
+            if (option1 != -1 && option2 != -1) {
                 std::cout << "Game Over";
                 break;
             }
