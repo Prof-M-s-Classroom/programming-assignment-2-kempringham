@@ -1,9 +1,9 @@
-1 | You wake up in a forest clearing. There are two paths. | 2 | 5
-2 | You follow the path to the left and encounter a river. | 3 | 4
-3 | You go right and find an old cabin. | -1 | -1
-4 | You swim across the river and find a treasure chest. | -1 | -1
-5 | You find a hidden passageway that leads to a secret room. | 4 | 6
-6 | The cabin is empty. You find a trapdoor leading downwards. | 7 | 8
-7 | The cabin is empty. You find a trapdoor leading downwards. | -1 | -1
-8 | The cabin is empty. You find a trapdoor leading downwards. | -1 | 9
-9 | The cabin is empty. You find a trapdoor leading downwards. | -1 | -1
+1 | Option 1 | 2 | 5
+2 | Option 2 | 3 | 4
+3 | Option 3 | -1 | -1
+4 | Option 4 | -1 | -1
+5 | Option 5 | 4 | 6
+6 | Option 6 | 7 | 8
+7 | Option 7 | -1 | -1
+8 | Option 8 | -1 | 9
+9 | Option 9 | -1 | -1
