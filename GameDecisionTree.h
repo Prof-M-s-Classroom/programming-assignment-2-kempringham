@@ -94,7 +94,7 @@ public:
 
 
     // TODO: Function to start the game and traverse the tree based on user input
-     void playGame() {
+void playGame() {
         Node<T>* curr = root;
 
         // Check if root exists
