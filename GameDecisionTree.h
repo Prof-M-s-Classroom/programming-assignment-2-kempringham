@@ -95,29 +95,31 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
-    //    Node<T>* curr = root;
+        Node<T>* curr = root;
 
         // Check if root exists
-    //    if (root == nullptr) {
-   //         std::cout << "No root node found" << std::endl;
-    //        return;
-    //    }
-
-    //    while (curr != nullptr) {
+        if (root == nullptr) {
+            std::cout << "No root node found" << std::endl;
+            return;
+        }
+        while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
-      //      std::cout << curr->data.getDescription() << std::endl;
+            std::cout << curr->data.getDescription() << std::endl;
 
             // Print option one
-      //      int option1 = curr->data.getLeftEventNumber();
-      //      if (option1 != -1) {
-       //         std::cout << "1. " << curr->left->data.getDescription() << std::endl;
-       //     }
+            int option1 = curr->data.getLeftEventNumber();
+            if (option1 != -1) {
+                std::cout << "1. " << curr->left->data.getDescription() << std::endl;
+            }
 
             // Print option two
-     //       int option2 = curr->data.getRightEventNumber();
-    //        if (option2 != -1) {
-    //            std::cout << "2. " << curr->right->data.getDescription() << std::endl;
-    //        }
+            int option2 = curr->data.getRightEventNumber();
+            if (option2 != -1) {
+                std::cout << "2. " << curr->right->data.getDescription() << std::endl;
+            }
+            // delete: testing
+            curr = nullptr;
+        }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
     //        if (option1 == -1 && option2 == -1) {
