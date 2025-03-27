@@ -113,6 +113,7 @@ public:
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
                     cout << "Game Over" << endl;
+                    curr = nullptr;
                 }
                 else {
                     curr = curr->left;
@@ -124,6 +125,7 @@ public:
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
                     cout << "Game Over" << endl;
+                    curr = nullptr;
                 }
                 else {
                     curr = curr->right;
