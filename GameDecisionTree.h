@@ -146,7 +146,7 @@ public:
                 //}
             //}
             // If user chooses 1, go left
-            if (userChoice == 1) {
+            if (userChoice == 'Option 1') {
                 // If curr's left pointer is null then the game ends
                 if (option1 == -1) {
                     cout << "Game Over" << endl;
@@ -158,7 +158,7 @@ public:
             }
 
             // If user chooses 1, go right
-            else if (userChoice == 2) {
+            else if (userChoice == 'Option 2') {
                 // If curr's right pointer is null then the game ends
                 if (option2 == -2) {
                     cout << "Game Over" << endl;
