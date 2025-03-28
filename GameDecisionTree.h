@@ -62,9 +62,8 @@ public:
         for (int i = 1; i < mapLength; i++) {
             // set the current node to the node at index i
             Node<T>* curr = nodeMap[i];
-            Story& story = curr->data;
-            int left = story.getLeftEventNumber();
-            int right = story.getRightEventNumber();
+            int left = curr->data.getLeftEventNumber();
+            int right = curr->data.getRightEventNumber();
 
             // if left child is not -1, set left child to the node at the index of the left child
             if (left != - 1) {
