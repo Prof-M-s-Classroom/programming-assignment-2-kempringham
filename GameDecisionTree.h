@@ -125,17 +125,17 @@ public:
             }
 
             // make sure user choice is valid(can only be 1 or 2)
-            std::string userChoice;
+            int userChoice;
             while (true) {
-                std::cout << "Enter your option: ";
-                std::getline(std::cin, userChoice);
+                std::cout << "Enter your choice: ";
+                std::cin >> userChoice;
 
-                if (userChoice == "Option 1" || userChoice == "Option 2") {
+                if (userChoice == 1 || userChoice == 2) {
                     break;
                 }
 
                 // If user choice is invalid, output that the user must choose a valid choice
-                if (userChoice != "Option 1" && userChoice != "Option 2") {
+                if (userChoice != 1 && userChoice != 2) {
                     std::cout << "Must choose either 1 or 2: ";
                 }
 
@@ -146,7 +146,7 @@ public:
                 }
             }
             // If user chooses 1, go left
-            if (userChoice == "Option 1") {
+            if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
                 if (curr->left == nullptr) {
                     std::cout << "Game Over" << std::endl;
@@ -158,7 +158,7 @@ public:
             }
 
             // If user chooses 1, go right
-            else if (userChoice == "Option 2") {
+            else if (userChoice == 2) {
                 // If curr's right pointer is null then the game ends
                 if (curr->right == nullptr) {
                     std::cout << "Game Over" << std::endl;
