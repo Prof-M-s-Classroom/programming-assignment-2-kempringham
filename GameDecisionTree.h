@@ -44,7 +44,7 @@ public:
                 getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
                 Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
                 Node<Story>* node = new Node<Story>(story);
-                nodeMap[mapLength] = node;
+                nodeMap[stoi(eventNumber)] = node;
                 mapLength += 1;
             }
         }
@@ -102,16 +102,19 @@ public:
 
         while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
-            std::cout << curr->data.getDescription() << std::endl;
 
-            // Print option one
             int option1 = curr->data.getLeftEventNumber();
+            int option2 = curr->data.getRightEventNumber();
+
+            if (option1 != -1 || option2 != -1) {
+                std::cout << curr->data.getDescription() << std::endl;
+            }
+            // Print option one
             if (option1 != -1) {
                 std::cout << "1. " << curr->left->data.getDescription() << std::endl;
             }
 
             // Print option two
-            int option2 = curr->data.getRightEventNumber();
             if (option2 != -1) {
                 std::cout << "2. " << curr->right->data.getDescription() << std::endl;
             }
