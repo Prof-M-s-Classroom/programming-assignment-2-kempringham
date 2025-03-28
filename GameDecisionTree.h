@@ -45,7 +45,7 @@ public:
                 getline(ss, rightChild, delimiter); // reads the fourth string in the line(the right child)
                 Story story(description, stoi(eventNumber), stoi(leftChild), stoi(rightChild));
                 Node<Story>* node = new Node<Story>(story);
-                nodeMap[stoi(eventNumber)] = node;
+                nodeMap[mapLength] = node;
                 mapLength += 1;
             }
         }
@@ -94,6 +94,7 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
+
     }
 
 };
