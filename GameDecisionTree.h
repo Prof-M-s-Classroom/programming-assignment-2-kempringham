@@ -126,13 +126,13 @@ public:
 
             // make sure user choice is valid(can only be 1 or 2)
             int userChoice;
-            while (true) {
+            //while (true) {
                 cout << "Enter your choice: ";
                 cin >> userChoice;
 
-                if (userChoice == 1 || userChoice == 2) {
-                    break;
-                }
+                //if (userChoice == 1 || userChoice == 2) {
+                //    break;
+                //}
 
                 // If user choice is invalid, output that the user must choose a valid choice
                 //if (userChoice != 1 && userChoice != 2) {
@@ -144,7 +144,7 @@ public:
                 //    cin.clear();
                 //    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //}
-            }
+            //}
             // If user chooses 1, go left
             if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
