@@ -8,6 +8,7 @@
 #include "Node.h"
 #include "Story.h"
 #include <limits> // added
+#include <string> // added
 
 template <typename T>
 class GameDecisionTree {
@@ -92,11 +93,6 @@ public:
 
     }
 
-    enum class UserChoice {
-        Option1,
-        Option2,
-    };
-
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
 
@@ -152,7 +148,7 @@ public:
                 //}
             //}
             // If user chooses 1, go left
-          if (userChoice == UserChoice::Option1) {
+          if (userChoice == 'Choice 1') {
                 // If curr's left pointer is null then the game ends
                 if (option1 == -1) {
                     cout << "Game Over" << endl;
@@ -164,7 +160,7 @@ public:
             }
 
             // If user chooses 1, go right
-            else if (userChoice == UserChoice::Option2) {
+            else if (userChoice == 'Choice 2') {
                 // If curr's right pointer is null then the game ends
                 if (option2 == -2) {
                     cout << "Game Over" << endl;
