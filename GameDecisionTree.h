@@ -8,7 +8,6 @@
 #include "Node.h"
 #include "Story.h"
 #include <limits> // added
-#include <string> // added
 
 template <typename T>
 class GameDecisionTree {
@@ -95,63 +94,62 @@ public:
 
     // TODO: Function to start the game and traverse the tree based on user input
     void playGame() {
+        Node<T>* curr = root;
 
-    Node<T> *curr = root;
-
-    // Check if root exists
+        // Check if root exists
         if (root == nullptr) {
-            cout << "No root node found" << std::endl;
+            std::cout << "No root node found" << std::endl;
             return;
         }
 
         while (curr != nullptr) {
             // Print the current situation and the paths that the user can take
-            cout << curr->data.getDescription() << endl;
+            std::cout << curr->data.getDescription() << std::endl;
 
             // Print option one
             int option1 = curr->data.getLeftEventNumber();
             if (option1 != -1) {
-                cout << "1. " << curr->left->data.getDescription() << endl;
+                std::cout << "1. " << curr->left->data.getDescription() << std::endl;
             }
 
             // Print option two
             int option2 = curr->data.getRightEventNumber();
             if (option2 != -1) {
-                cout << "2. " << curr->right->data.getDescription() << endl;
+                std::cout << "2. " << curr->right->data.getDescription() << std::endl;
             }
 
             // If option one and two are -1, the curr node does not have any children, so the game is over
             if (option1 == -1 && option2 == -1) {
-                cout << "Game Over";
+                std::cout << "Game Over";
                 break;
             }
 
             // make sure user choice is valid(can only be 1 or 2)
-            string userChoice;
-            //while (true) {
-                cout << "Enter your choice: ";
-                cin >> userChoice;
+            std::string userChoice;
+            while (true) {
+                std::cout << "Enter your option: ";
+                std::getline(std::cin, userChoice);
 
-                //if (userChoice == 1 || userChoice == 2) {
-                //    break;
-                //}
+                if (userChoice == "Option 1" || userChoice == "Option 2") {
+                    break;
+                }
 
                 // If user choice is invalid, output that the user must choose a valid choice
-                //if (userChoice != 1 && userChoice != 2) {
-                //    cout << "Must choose either 1 or 2: ";
-                //}
+                if (userChoice != "Option 1" && userChoice != "Option 2") {
+                    std::cout << "Must choose either 1 or 2: ";
+                }
 
                 // If user choice is invalid, have user input a valid choice
-                //if (cin.fail()) {
-                //    cin.clear();
-                //    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                //}
-            //}
+                if (std::cin.fail()) {
+                    std::cin.clear();
+                    std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            }
             // If user chooses 1, go left
-          if (userChoice == "Choice 1") {
+            if (userChoice == "Option 1") {
                 // If curr's left pointer is null then the game ends
-                if (option1 == -1) {
-                    cout << "Game Over" << endl;
+                if (curr->left == nullptr) {
+                    std::cout << "Game Over" << std::endl;
                     curr = nullptr;
                 }
                 else {
@@ -160,10 +158,10 @@ public:
             }
 
             // If user chooses 1, go right
-            else if (userChoice == "Choice 2") {
+            else if (userChoice == "Option 2") {
                 // If curr's right pointer is null then the game ends
-                if (option2 == -2) {
-                    cout << "Game Over" << endl;
+                if (curr->right == nullptr) {
+                    std::cout << "Game Over" << std::endl;
                     curr = nullptr;
                 }
                 else {
