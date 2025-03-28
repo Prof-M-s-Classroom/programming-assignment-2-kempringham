@@ -148,7 +148,7 @@ public:
             // If user chooses 1, go left
             if (userChoice == 1) {
                 // If curr's left pointer is null then the game ends
-                if (curr->left == nullptr) {
+                if (option1 == -1) {
                     cout << "Game Over" << endl;
                     curr = nullptr;
                 }
@@ -160,7 +160,7 @@ public:
             // If user chooses 1, go right
             else if (userChoice == 2) {
                 // If curr's right pointer is null then the game ends
-                if (curr->right == nullptr) {
+                if (option2 == -2) {
                     cout << "Game Over" << endl;
                     curr = nullptr;
                 }
