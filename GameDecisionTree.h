@@ -135,15 +135,15 @@ public:
                 }
 
                 // If user choice is invalid, output that the user must choose a valid choice
-                if (userChoice != 1 && userChoice != 2) {
-                    cout << "Must choose either 1 or 2: ";
-                }
+                //if (userChoice != 1 && userChoice != 2) {
+                //    cout << "Must choose either 1 or 2: ";
+                //}
 
                 // If user choice is invalid, have user input a valid choice
-                if (cin.fail()) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
+                //if (cin.fail()) {
+                //    cin.clear();
+                //    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                //}
             }
             // If user chooses 1, go left
             if (userChoice == 1) {
