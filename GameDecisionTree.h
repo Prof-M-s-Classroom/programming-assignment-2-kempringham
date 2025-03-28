@@ -125,7 +125,7 @@ public:
             }
 
             // make sure user choice is valid(can only be 1 or 2)
-            int userChoice;
+            string userChoice;
             //while (true) {
                 cout << "Enter your choice: ";
                 cin >> userChoice;
