@@ -1,0 +1,18 @@
+1  | You just murdered your spouse. What do you do? | 2 | 3
+2  | You hide the weapon and call the cops. | 4 | 5
+3  | You clean up the crime scene. | 6 | 7
+4  | You confess to the murder when the cops arrive. | -1 | -1
+5  | You create an alibi by calling a friend and telling them to say you were at their house. | 8 | 9
+6  | You wait until dark and drive to a secluded area with the body. | 10 | 11
+7  | You wait until the next day to call the cops. | 12 | 13
+8  | You tell the cops you were at your friend's house when the murder occurred. | 14 | 15
+9  | You tell the cops you were at work when the murder occurred. | -1 | -1
+10 | You see a car in your rearview mirror, but you dump the body anyways. | -1 | -1
+11 | You feel guilty and call the cops. | -1 | -1
+12 | You tell the cops the incident occurred when you came home from work. | 16 | 17
+13 | You claim you were attacked. | 17 | 18
+14 | You switch your story and say it was self-defense. | -1 | -1
+15 | You tell the cops the story again, but you slip up and say you were coming home from work. | -1 | -1
+16 | You tell the cops it was an accident because you thought your spouse was an intruder. | -1 | -1
+17 | You tell the cops there was an intruder, but your neighbor has a security camera. | -1 | -1
+18 | You tell the cops your spouse's mistress attacked you both, but they have an alibi. | -1 | -1

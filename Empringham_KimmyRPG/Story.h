@@ -15,6 +15,12 @@ public:
 
     // Parameterized constructor
     Story(string desc, int num, int leftNum, int rightNum);
+
+    // Added helper methods
+    string getDescription();
+    int getEventNumber();
+    int getLeftEventNumber();
+    int getRightEventNumber();
 };
 
 #endif // STORY_H
