@@ -140,7 +140,7 @@ public:
 
             // If option one and two are -1, the curr node is a leaf, so the game is over
             if (option1 == -1 && option2 == -1) {
-                std::cout << "Game Over";
+                std::cout << "You got caught.";
                 break;
             }
 
@@ -174,7 +174,7 @@ public:
                 }
                 // If curr's left pointer is null then the game ends
                 else {
-                    std::cout << "Game Over" << std::endl;
+                    std::cout << "You were caught." << std::endl;
                     curr = nullptr;
                 }
             }
@@ -187,7 +187,7 @@ public:
                 }
                 // If curr's right pointer is null then the game ends
                 else {
-                    std::cout << "Game Over" << std::endl;
+                    std::cout << "You were caught." << std::endl;
                     curr = nullptr;
                 }
 
